@@ -1,5 +1,5 @@
 # Ignorar arquivos de configuração com chaves de API
-# A linha 'app-config.js' foi removida para que o Git rastreie o placeholder.
+config.js
 
 # Ignorar dependências do Node.js
 /node_modules
