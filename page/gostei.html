@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeos que Gostei</title>
+  <link rel="stylesheet" href="../style.css"> 
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <span id="menu-toggle">&#9776;</span>
+      <a href="../index.html" style="text-decoration: none; color: inherit;"><div class="logo">▶ YouTube</div></a>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Pesquisar">
+      <button id="search-button">🔍</button>
+    </div>
+    <div class="icons">
+      <span>📹</span>
+      <span>🔔</span>
+      <span>😊</span>
+    </div>
+  </header>
+
+
+  <aside class="sidebar">
+    <a href="../index.html">🏠 Início</a>
+    <a href="#">🔥 Shorts</a>
+    <h3>Você ></h3>
+    <a href="historico.html">Histórico</a>
+    <a href="playlist.html">Playlists</a>
+    <a href="playlist.html?id=watch-later">Assistir mais tarde</a>
+    <a href="gostei.html">Videos com 'Gostei'</a>
+    <a href="sobre.html">Sobre</a>
+  </aside>
+
+
+  <main class="content">
+    <h1>Vídeos marcados com 'Gostei'</h1>
+    <div id="liked-videos-container" class="video-grid">
+    </div>
+  </main>
+
+  <script type="module" src="/page/gostei.js"></script>
+</body>
+</html>

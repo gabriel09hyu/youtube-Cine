@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clone YouTube - Vídeo</title>
+  <link rel="stylesheet" href="video.css">
+</head>
+<body class="sidebar-collapsed">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <span id="menu-toggle">&#9776;</span>
+      <a href="../index.html" class="logo-link"><div class="logo">▶ YouTube</div></a>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Pesquisar">
+      <button id="search-button">🔍</button>
+    </div>
+    <div class="icons">
+      <span class="mobile-search-icon">🔍</span>
+      <span>📹</span>
+      <span>🔔</span>
+      <span>😊</span>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="../index.html">🏠 Início</a>
+    <a href="shorts.html">🔥 Shorts</a>
+    <h3>Você ></h3>
+    <a href="historico.html">Histórico</a>
+    <a href="playlist.html">Playlists</a>
+    <a href="playlist.html?id=watch-later">Assistir mais tarde</a>
+    <a href="gostei.html">Videos com 'Gostei'</a>
+    <a href="sobre.html">Sobre</a>
+  </aside>
+
+  <main class="content">
+    <div class="video-layout">
+    <section class="video-section">
+      <div class="video-player">
+        <div class="fake-player">Player do Vídeo</div>
+      </div>
+
+      <h2 class="video-title"></h2>
+
+      <div class="video-meta">
+        <p class="views">49.969 visualizações • 25 de mai. de 2025</p>
+      </div>
+
+      <div class="video-actions">
+        <button>👍 Curtir</button>
+        <button>👎 Não gostei</button>
+        <button>🔗 Compartilhar</button>
+        <div class="save-action-container">
+          <button class="save-btn">💾 Salvar</button>
+          <div class="save-playlist-menu">
+            <div class="menu-header">Salvar vídeo em:</div>
+            <ul class="playlist-list">
+              <li><label><input type="checkbox" data-playlist-id="watch-later"> Assistir mais tarde</label></li>
+            </ul>
+            <button class="new-playlist-btn">+ Nova playlist</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="channel-info">
+        <div class="channel-avatar">😊</div>
+        <div>
+          <p class="channel-name">Nome do Canal</p>
+          <p class="subscribers">16,2 mil inscritos</p>
+        </div>
+        <button class="subscribe-btn">Inscrever-se</button>
+      </div>
+
+      <div class="video-description">
+        <p>Aqui vai a descrição do vídeo de forma genérica.</p>
+      </div>
+
+      <!-- Seção de Comentários -->
+      <section class="comments-section">
+        <div class="comments-header">
+          <h3>Comentários</h3>
+          <button class="sort-btn">☰ ORDENAR POR</button>
+        </div>
+        <div class="add-comment">
+          <div class="channel-avatar">G</div>
+          <input class="comment-input" type="text" placeholder="Adicione um comentário...">
+        </div>
+      </section>
+
+      <!-- comentários gerados pela IA -->
+      <section class="ai-comments-container">
+      </section>
+    </section>
+
+    <!-- Direita: recomendações -->
+    <aside class="recommendations">
+      <h3 class="recommendations-title">Recomendados</h3>
+      <div class="recommendation">
+        <div class="thumb"></div>
+        <div class="rec-info">
+          <p class="rec-title">Vídeo recomendado 1</p>
+          <p class="rec-channel">Outro Canal</p>
+          <p class="rec-views">33 mil visualizações</p>
+        </div>
+      </div>
+
+      <div class="recommendation">
+        <div class="thumb"></div>
+        <div class="rec-info">
+          <p class="rec-title">Vídeo recomendado 2</p>
+          <p class="rec-channel">Outro Canal</p>
+          <p class="rec-views">120 mil visualizações</p>
+        </div>
+      </div>
+
+      <div class="recommendation">
+        <div class="thumb"></div>
+        <div class="rec-info">
+          <p class="rec-title">Vídeo recomendado 3</p>
+          <p class="rec-channel">Outro Canal</p>
+          <p class="rec-views">87 mil visualizações</p>
+        </div>
+      </div>
+    </aside>
+    </div>
+  </main>
+
+  <div id="new-playlist-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Nova playlist</h2>
+      <input type="text" id="playlist-name-input" placeholder="Nome da playlist" maxlength="50">
+      <div class="modal-actions">
+        <button id="cancel-playlist-btn">Cancelar</button>
+        <button id="create-playlist-btn">Criar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/generative-ai": "https://esm.run/@google/generative-ai"
+  }
+}
+</script>
+  <script src="video.js" type="module"></script>
+</body>
+</html>

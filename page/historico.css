@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #181818;
+  color: white;
+  display: flex;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #202020;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+#menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 15px;
+  color: #aaa;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: red;
+  padding: 8px;
+  padding-top: 7px;
+  border: 0.1px rgba(0, 0, 0, 0.4) solid;
+  border-radius: 10px;
+  margin-left: 16px;
+  text-shadow: 2px 0px 0 black;
+}
+
+.search-bar {
+  display: flex;
+  flex: 1;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  border-radius: 2px 0 0 2px;
+}
+
+.search-bar button {
+  background: #303030;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+}
+
+.icons span {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
+  background: #202020;
+  height: calc(100% - 60px);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.sidebar-collapsed .sidebar {
+  transform: translateX(-100%);
+}
+
+.sidebar-collapsed .content {
+  margin-left: 0;
+  width: 100%;
+}
+
+.sidebar a {
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar a:hover {
+  background: #383838;
+}
+
+.content {
+  margin-top: 60px;
+  margin-left: 200px;
+  padding: 20px;
+  width: calc(100% - 200px);
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.content h1 {
+  margin-bottom: 20px;
+}
+
+#video-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); 
+  gap: 20px;
+}
+
+.video {
+  background: #282828;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin: 20px;
+
+}
+
+.video:hover {
+  transform: scale(1.03);
+}
+
+.title {
+  font-size: 14px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.channel {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.history-container {
+    display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+}
