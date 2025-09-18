@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# Adiciona permissões de escrita para a Action poder publicar na branch gh-pages
 permissions:
   contents: write
 
@@ -13,16 +12,25 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Baixa o código do repositório
+      - name: 1. Baixa o código do repositório
         uses: actions/checkout@v3
 
-      - name: Cria o arquivo config.js com os Secrets
+      - name: 2. Cria o arquivo config.js com as chaves secretas
         run: |
           echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > config.js
           echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" >> config.js
+          echo "--- Conteúdo do config.js criado ---"
+          cat config.js
+          echo "------------------------------------"
 
-      - name: Publica no GitHub Pages
+      - name: 3. Publica no GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # A branch que será publicada
           folder: . # A pasta raiz do seu projeto
+          # Esta opção remove o .gitignore antes do deploy, forçando
+          # a inclusão de TODOS os arquivos, incluindo o config.js.
+          # O seu .gitignore no repositório principal continua intacto.
+          clean: true
+          clean-exclude: |
+            .gitignore
