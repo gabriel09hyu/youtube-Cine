@@ -17,9 +17,9 @@ jobs:
 
       - name: Cria o arquivo de configuração
         run: |
-          echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > config.js
-          echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" >> config.js
-        # Este passo cria o config.js na raiz do projeto.
+          echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > app-config.js
+          echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" >> app-config.js
+        # Este passo cria o app-config.js na raiz do projeto.
         # A action de deploy vai incluir este arquivo porque ele não está no .gitignore
         # da branch de deploy.
 
@@ -31,4 +31,4 @@ jobs:
           # A opção clean-exclude força a inclusão de arquivos que poderiam ser ignorados.
           # Vamos garantir que o config.js seja incluído.
           clean-exclude: |
-            config.js
+            app-config.js
