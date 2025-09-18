@@ -21,12 +21,12 @@ jobs:
           echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > config.js
           echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" >> config.js
 
+      - name: Remove .gitignore para forçar a inclusão do config.js
+        run: rm .gitignore
+
       - name: Publica no GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # A branch que será publicada
           clean: true # Remove arquivos existentes da branch de deploy antes de publicar
           folder: . # A pasta raiz do seu projeto
-          # A opção 'clean-exclude' força a inclusão de arquivos que estariam no .gitignore
-          clean-exclude: |
-            config.js
