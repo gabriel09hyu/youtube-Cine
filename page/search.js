@@ -46,22 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         card.addEventListener('click', () => {
-            const mediaType = movie.media_type || 'movie'; // Garante que o tipo seja passado
+            const mediaType = movie.media_type || 'movie'; 
             window.location.href = `video.html?id=${movie.id}&type=${mediaType}`;
         });
 
         return card;
     };
 
-    // --- Execução Principal ---
     const init = async () => {
-        // Carregar resultados da busca vindos da URL
         const query = getSearchQuery();
         if (query) {
             searchTitle.textContent = `Resultados para: "${decodeURIComponent(query)}"`;
             searchInput.value = decodeURIComponent(query);
             const movies = await searchMovies(query);
-            resultsContainer.innerHTML = ''; // Limpa o container
+            resultsContainer.innerHTML = ''; 
             if (movies.length > 0) {
                 movies.forEach(movie => resultsContainer.appendChild(createSearchResultCard(movie)));
             } else {
@@ -75,5 +73,4 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 });
 
-// Importa a lógica compartilhada do menu e busca
 import "./layout.js";

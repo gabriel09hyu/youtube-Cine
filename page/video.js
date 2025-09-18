@@ -4,10 +4,10 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
 // --- Configuração da API ---
 
     const apiKey = 'd62492ee51bbba141d7a8f0c7daa6e30';
-    const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'; // Para thumbnails
-    const posterBaseUrl = 'https://image.tmdb.org/t/p/w780'; // Para o pôster
-    const SHORTS_POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w342'; // Para posters dos shorts
-    const backdropBaseUrl = 'https://image.tmdb.org/t/p/original'; // Para o fundo borrado
+    const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'; 
+    const posterBaseUrl = 'https://image.tmdb.org/t/p/w780'; 
+    const SHORTS_POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w342'; 
+    const backdropBaseUrl = 'https://image.tmdb.org/t/p/original'; 
 
     const api = axios.create({
         baseURL: 'https://api.themoviedb.org/3/',
@@ -25,7 +25,7 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
     const videoDescription = document.querySelector('.video-description p');
     const recommendationsContainer = document.querySelector('.recommendations');
     const aiCommentsContainer = document.querySelector('.ai-comments-container');
-    const commentInput = document.querySelector('.comment-input'); // Input de comentário
+    const commentInput = document.querySelector('.comment-input'); 
     const likeBtn = document.querySelector('.video-actions button:nth-child(1)');
     const dislikeBtn = document.querySelector('.video-actions button:nth-child(2)');
     const subscribeBtn = document.querySelector('.subscribe-btn');
@@ -38,21 +38,17 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
     const createPlaylistBtn = document.getElementById('create-playlist-btn');
     const cancelPlaylistBtn = document.getElementById('cancel-playlist-btn');
 
-    let currentMediaDetails = null; // Variável para guardar os detalhes do vídeo/série atual
+    let currentMediaDetails = null; 
 
-    // --- Funções ---
 
-    // Pega o ID do filme da URL (ex: ?id=12345)
     const getMovieId = () => {
         const params = new URLSearchParams(window.location.search);
         return params.get('id');
     };
     const getMediaType = () => new URLSearchParams(window.location.search).get('type') || 'movie';
 
-    // Busca os detalhes de um filme específico
     const getMediaDetails = async (id, type) => {
         try {
-            // Usa o endpoint dinâmico /movie/{id} ou /tv/{id}
             const { data } = await api.get(`/${type}/${id}`);
             return data;
         } catch (error) {
@@ -61,7 +57,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         }
     };
 
-    // Busca os filmes recomendados
     const getRecommendations = async (id, type) => {
         try {
             const { data } = await api.get(`/${type}/${id}/recommendations`);
@@ -72,30 +67,24 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         }
     };
 
-    // Preenche a página com os dados do filme
     const populateVideoDetails = (media) => {
         if (!media) return;
 
-        // Pega o título e a data corretos para filme ou série
         const title = media.title || media.name;
         const releaseDateRaw = media.release_date || media.first_air_date;
 
-        // Adiciona o backdrop como fundo borrado
         if (media.backdrop_path) {
             fakePlayer.style.backgroundImage = `url('${backdropBaseUrl}${media.backdrop_path}')`;
         }
 
-        // Coloca o pôster no player (em cima do fundo)
         fakePlayer.innerHTML = media.poster_path
             ? `<img src="${posterBaseUrl}${media.poster_path}" alt="${title}">`
             : `Pôster não disponível`;
 
-        // Preenche título, nota e descrição
         videoTitle.textContent = title;
         const releaseDate = new Date(releaseDateRaw).toLocaleDateString('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' });
         videoMeta.textContent = `Nota: ${media.vote_average.toFixed(1)}/10 • Lançado em ${releaseDate}`;
 
-        // --- Monta a nova descrição detalhada ---
         const genres = media.genres && media.genres.length > 0
             ? media.genres.map(g => g.name).join(', ')
             : 'Não informado';
@@ -104,7 +93,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
             ? media.production_companies.map(c => c.name).join(', ')
             : 'Não informado';
 
-        // Usamos innerHTML para formatar a descrição com mais detalhes
         videoDescription.parentElement.innerHTML = `
             <p>${media.overview || 'Nenhuma descrição disponível.'}</p>
             <br>
@@ -121,13 +109,11 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
                 <br>
             </ul>
         `;
-        // Guarda os detalhes do filme/série para uso posterior (ex: curtir)
         currentMediaDetails = media;
 
         generateAndDisplayComments(title);
     };
 
-    // Gera um nome de usuário aleatório para os comentários
     const generateRandomUsername = () => {
         const adjectives = ['Cinefilo', 'AmanteDeFilmes', 'Critico', 'Pipoca', 'Tela', 'Maratonista'];
         const nouns = ['Amador', 'Expert', 'Curioso', 'Fanatico', 'Casual', 'Viciado'];
@@ -135,7 +121,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         return `${adjectives[Math.floor(Math.random() * adjectives.length)]}${nouns[Math.floor(Math.random() * nouns.length)]}${numbers}`;
     };
 
-    // Cria o card de comentário
     const createCommentCard = ({ username, text }) => {
         const commentDiv = document.createElement('div');
         commentDiv.className = 'comment';
@@ -151,7 +136,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         return commentDiv;
     };
 
-    // Gera e exibe os comentários da IA
     const generateAndDisplayComments = async (movieTitle) => {
         if (!aiCommentsContainer) {
             console.error("Container para comentários de IA não encontrado. Adicione <div class='ai-comments-container'></div> ao seu HTML.");
@@ -160,7 +144,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         aiCommentsContainer.innerHTML = '<h3 style="margin: 20px">Comentários da Comunidade (Gerados por IA)</h3><p>Gerando comentários...</p>';
 
         try {
-            // ATENÇÃO: Mantenha sua chave de API segura e não a exponha no código do cliente em produção.
             const API_KEY = "AIzaSyBn8mLJXIaZgUX_NyOIkYqRXY9uGbL9LZI";
             const genAI = new GoogleGenerativeAI(API_KEY);
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -174,7 +157,7 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
                 `Gere um comentário para o filme "${movieTitle}" que termina com uma pergunta para engajar outros fãs na discussão (Ex: "Achei o final incrível, mas fiquei com uma dúvida..."). O comentário deve ser curto e informal. Não adicione seu nome de usuário no comentário.`
             ];
 
-            const numberOfComments = Math.floor(Math.random() * 4) + 3; // Gera de 3 a 6 comentários
+            const numberOfComments = Math.floor(Math.random() * 4) + 3; 
             const commentPromises = [];
 
             for (let i = 0; i < numberOfComments; i++) {
@@ -183,7 +166,7 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
             }
 
             const results = await Promise.all(commentPromises);
-            aiCommentsContainer.innerHTML = '<h3>Comentários da Comunidade (Gerados por IA)</h3>'; // Limpa o "carregando"
+            aiCommentsContainer.innerHTML = '<h3>Comentários da Comunidade (Gerados por IA)</h3>'; 
             results.forEach(result => {
                 const commentCard = createCommentCard({ username: generateRandomUsername(), text: result.response.text() });
                 aiCommentsContainer.appendChild(commentCard);
@@ -195,7 +178,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         }
     };
 
-    // Cria um card de recomendação
     const createRecommendationCard = (media) => {
         const card = document.createElement('div');
         card.className = 'recommendation';
@@ -212,23 +194,18 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         
         const thumbDiv = card.querySelector('.thumb');
         if (media.backdrop_path) {
-            // Correção Final: Força a propriedade correta para a imagem não esticar.
-            // Garante que todas as propriedades do background sejam aplicadas para evitar que a imagem estique.
             thumbDiv.style.backgroundImage = `url('${imageBaseUrl}${media.backdrop_path}')`;
             thumbDiv.style.backgroundSize = 'cover';
             thumbDiv.style.backgroundPosition = 'center';
         }
 
-        // Faz o card ser clicável para navegar para o novo filme
         card.addEventListener('click', () => {
             window.location.href = `video.html?id=${media.id}&type=${media.media_type || getMediaType()}`;
         });
         return card;
     };
 
-    /**
-     * Cria um card de "short" para a coluna de recomendações.
-     */
+   
     const createRecShortCard = (item) => {
         const shortCard = document.createElement('div');
         shortCard.className = 'rec-short-card';
@@ -249,13 +226,10 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         return shortCard;
     }
 
-    /**
-     * Carrega e exibe os shorts na coluna de recomendações.
-     */
     const loadShortsForRecommendations = async () => {
         const shortsEndpoints = [
             api.get('/movie/popular', { params: { page: 1 } }),
-            api.get('/tv/popular', { params: { page: 2 } }), // Página 2 para variar
+            api.get('/tv/popular', { params: { page: 2 } }), 
             api.get('/trending/all/day', { params: { page: 1 } })
         ];
 
@@ -292,7 +266,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
     };
 
 
-    // Adiciona as interações básicas nos botões
     const setupButtonInteractions = () => {
         if (likeBtn) {
             likeBtn.addEventListener('click', () => {
@@ -325,46 +298,40 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
             });
         }
 
-        // Lógica para o botão Salvar
         if (saveBtn && saveMenu) {
             saveBtn.addEventListener('click', (event) => {
-                event.stopPropagation(); // Impede que o clique feche o menu imediatamente
+                event.stopPropagation(); 
                 saveMenu.classList.toggle('show');
                 if (saveMenu.classList.contains('show')) {
-                    loadUserPlaylists(); // Carrega as playlists quando o menu é aberto
+                    loadUserPlaylists(); 
                 }
             });
 
-            // Fecha o menu se clicar fora dele
             document.addEventListener('click', (event) => {
                 if (!saveMenu.contains(event.target) && !saveBtn.contains(event.target)) {
                     saveMenu.classList.remove('show');
                 }
             });
 
-            // Lógica para o checkbox "Assistir mais tarde"
             const watchLaterCheckbox = saveMenu.querySelector('[data-playlist-id="watch-later"]');
             watchLaterCheckbox.addEventListener('change', () => {
                 if (watchLaterCheckbox.checked) {
                     addVideoToWatchLater(currentMediaDetails);
                     showNotification('Adicionado a "Assistir mais tarde"');
                 } else {
-                    // A função para remover de "Assistir mais tarde" não existe no videoManager, então vamos usar a genérica
                     removeVideoFromPlaylist('watchLater', currentMediaDetails.id);
                     showNotification('Removido de "Assistir mais tarde"');
                 }
             });
 
-            // Lógica para o botão "+ Nova playlist"
             if (newPlaylistBtn) {
                 newPlaylistBtn.addEventListener('click', () => {
-                    saveMenu.classList.remove('show'); // Fecha o menu de salvar
-                    newPlaylistModal.classList.add('show'); // Abre o modal
+                    saveMenu.classList.remove('show'); 
+                    newPlaylistModal.classList.add('show'); 
                     playlistNameInput.focus();
                 });
             }
 
-            // Lógica dos botões do Modal
             if (cancelPlaylistBtn) {
                 cancelPlaylistBtn.addEventListener('click', () => {
                     newPlaylistModal.classList.remove('show');
@@ -377,19 +344,16 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
                     if (playlistName) {
                         const newPlaylist = createUserPlaylist(playlistName);
                         
-                        // Garante que 'currentMediaDetails' é válido antes de salvar
                         if (!currentMediaDetails) {
                             console.error("Erro: Detalhes do vídeo não estão disponíveis para salvar na playlist.");
                             return;
                         }
 
-                        // Salva o vídeo na nova playlist
                         addVideoToPlaylist(newPlaylist.id, currentMediaDetails);
 
-                        playlistNameInput.value = ''; // Limpa o input
-                        newPlaylistModal.classList.remove('show'); // Fecha o modal
+                        playlistNameInput.value = ''; 
+                        newPlaylistModal.classList.remove('show'); 
 
-                        // Redireciona para a página da nova playlist
                         window.location.href = `playlist.html?id=${newPlaylist.id}`;
                     }
                 });
@@ -397,7 +361,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         }
     };
 
-    // Função auxiliar para criar um item de lista de playlist
     const createPlaylistListItem = (playlist) => {
         const listItem = document.createElement('li');
         const label = document.createElement('label');
@@ -405,7 +368,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         checkbox.type = 'checkbox';
         checkbox.dataset.playlistId = playlist.id;
 
-        // Verifica se o vídeo atual já está nesta playlist
         if (currentMediaDetails) {
             const videosInPlaylist = getVideoList(playlist.id);
             const isVideoInPlaylist = videosInPlaylist.some(v => v.id === currentMediaDetails.id);
@@ -418,9 +380,8 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         label.appendChild(document.createTextNode(` ${playlist.name}`));
         listItem.appendChild(label);
 
-        // Adiciona o evento de salvar/remover
         checkbox.addEventListener('change', () => {
-            if (!currentMediaDetails) return; // Segurança
+            if (!currentMediaDetails) return; 
             if (checkbox.checked) {
                 addVideoToPlaylist(playlist.id, currentMediaDetails);
                 showNotification(`Salvo em "${playlist.name}"`);
@@ -433,14 +394,11 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         return listItem;
     };
 
-    // Função para carregar as playlists do usuário no menu
     const loadUserPlaylists = () => {
         if (!saveMenu) return;
         const playlistList = saveMenu.querySelector('.playlist-list');
-        // Limpa apenas as playlists customizadas, mantendo "Assistir mais tarde"
         playlistList.querySelectorAll('li:not(:first-child)').forEach(li => li.remove());
 
-        // Verifica e marca "Assistir mais tarde" se o vídeo já estiver lá
         if (currentMediaDetails) {
             const watchLaterVideos = getVideoList('watchLater');
             const isVideoInWatchLater = watchLaterVideos.some(v => v.id === currentMediaDetails.id);
@@ -455,12 +413,11 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         });
     };
 
-    // Função para criar um card de comentário do usuário
     const createUserCommentCard = (text) => {
         const commentDiv = document.createElement('div');
-        commentDiv.className = 'comment user-comment'; // Adiciona classe 'user-comment'
-        const username = 'Você'; // Nome de usuário fixo para o usuário
-        const randomColor = `hsl(${Math.random() * 360}, 50%, 60%)`; // Cor aleatória
+        commentDiv.className = 'comment user-comment'; 
+        const username = 'Você'; 
+        const randomColor = `hsl(${Math.random() * 360}, 50%, 60%)`; 
 
         commentDiv.innerHTML = `
             <div class="avatar" style="background-color: ${randomColor};">${username.charAt(0).toUpperCase()}</div>
@@ -472,12 +429,11 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         return commentDiv;
     };
 
-    // Função para criar um card de resposta da IA
     const createAiResponseCard = (text) => {
         const responseDiv = document.createElement('div');
-        responseDiv.className = 'comment ai-response'; // Adiciona classe 'ai-response'
-        const username = 'IA'; // Nome de usuário fixo para a IA
-        const randomColor = `hsl(${Math.random() * 360}, 50%, 60%)`; // Cor aleatória
+        responseDiv.className = 'comment ai-response'; 
+        const username = 'IA'; 
+        const randomColor = `hsl(${Math.random() * 360}, 50%, 60%)`; 
 
         responseDiv.innerHTML = `
             <div class="avatar" style="background-color: ${randomColor};">${username.charAt(0).toUpperCase()}</div>
@@ -489,44 +445,37 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         return responseDiv;
     };
 
-    // Função para exibir a notificação no topo
     const showNotification = (message) => {
         const notificationDiv = document.createElement('div');
         notificationDiv.className = 'notification';
         notificationDiv.textContent = message;
         document.body.appendChild(notificationDiv);
 
-        // Remove a notificação após alguns segundos
         setTimeout(() => {
             notificationDiv.remove();
-        }, 5000); // 5 segundos
+        }, 5000); 
     };
 
-    // Lógica para adicionar o comentário do usuário e a resposta da IA
     if (commentInput) {
         commentInput.addEventListener('keydown', async (event) => {
             if (event.key === 'Enter') {
-                event.preventDefault(); // Evita que o formulário seja enviado
+                event.preventDefault(); 
                 const commentText = commentInput.value.trim();
                 if (commentText) {
-                    // Adiciona o comentário do usuário na interface
                     const userCommentCard = createUserCommentCard(commentText);
-                    // Adiciona o comentário do usuário no topo da lista (depois do título)
                     if (aiCommentsContainer) {
                         const titleElement = aiCommentsContainer.querySelector('h3');
                         titleElement.insertAdjacentElement('afterend', userCommentCard);
                     }
-                    commentInput.value = ''; // Limpa o input
+                    commentInput.value = ''; 
 
-                    // Simula um atraso para a resposta da IA
                     setTimeout(async () => {
                         const aiResponse = await generateAiResponse(commentText);
                         showNotification('A IA respondeu ao seu comentário!');
                         if (aiCommentsContainer) {
-                            // Insere a resposta da IA logo após o comentário do usuário
                             userCommentCard.insertAdjacentElement('afterend', createAiResponseCard(aiResponse));
                         }
-                    }, 3000); // 3 segundos de atraso
+                    }, 3000); 
                 }
             }
         });
@@ -538,36 +487,31 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         });
     }
 
-    // Lógica da barra de pesquisa
     const handleSearch = () => {
         const header = document.querySelector('.header');
         const query = searchInput.value.trim();
 
-        // Em telas móveis, se a busca estiver ativa E o campo estiver VAZIO, o botão funciona como "voltar".
         if (window.innerWidth <= 768 && header.classList.contains('search-active') && !query) {
             header.classList.remove('search-active');
-            event.preventDefault(); // Previne qualquer outra ação
-            return; // Para a execução aqui para não pesquisar
+            event.preventDefault(); 
+            return; 
         }
 
-        // Se houver texto, executa a busca
         if (query) {
-            // O caminho para a página de busca é relativo ao diretório 'page'
             window.location.href = `search.html?query=${encodeURIComponent(query)}`;
         }
     };
 
-    searchButton.addEventListener('click', handleSearch); // O evento já é passado para a função
+    searchButton.addEventListener('click', handleSearch); 
     searchInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') handleSearch();
     });
 
-    // Lógica para a busca em telas móveis
     if (mobileSearchIcon) {
         const header = document.querySelector('.header');
         mobileSearchIcon.addEventListener('click', () => {
             header.classList.add('search-active');
-            searchInput.focus(); // Foca no input de busca
+            searchInput.focus(); 
         });
 
     }
@@ -577,7 +521,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
       const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-      // 1. Construir um contexto detalhado sobre o filme/série atual
       let mediaContext = "Contexto sobre a obra sendo discutida:\n";
       if (currentMediaDetails) {
           mediaContext += `- Título: ${currentMediaDetails.title || currentMediaDetails.name}\n`;
@@ -586,7 +529,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
           mediaContext += `- Nota Média: ${currentMediaDetails.vote_average.toFixed(1)}/10\n`;
       }
 
-      // 2. Criar um prompt com instruções claras e o contexto
       const prompt = `
         ${mediaContext}
 
@@ -609,7 +551,6 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
       return result.response.text();
     }
 
-    // --- Execução Principal ---
     const init = async () => {
         const movieId = getMovieId();
         const mediaType = getMediaType();
@@ -619,16 +560,13 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         populateVideoDetails(mediaDetails);
 
         const recommendedMedia = await getRecommendations(movieId, mediaType);
-        // Limpa apenas os vídeos estáticos e seções de shorts, preservando o título
         recommendationsContainer.querySelectorAll('.recommendation, .rec-shorts-container').forEach(el => el.remove());
 
 
-        // Adiciona os 2 primeiros vídeos recomendados
         recommendedMedia.slice(0, 2).forEach(media => {
             recommendationsContainer.appendChild(createRecommendationCard(media));
         });
 
-        // Cria e injeta a seção de Shorts
         const shortsSectionHtml = `
             <div class="rec-shorts-container">
                 <h3>Shorts</h3>
@@ -641,19 +579,17 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         `;
         recommendationsContainer.insertAdjacentHTML('beforeend', shortsSectionHtml);
 
-        // Adiciona o restante das recomendações
         recommendedMedia.slice(2, 15).forEach(media => {
             recommendationsContainer.appendChild(createRecommendationCard(media));
         });
 
-        // Carrega o conteúdo dos shorts e adiciona a lógica dos botões
         await loadShortsForRecommendations();
         const shortsGrid = recommendationsContainer.querySelector('.rec-shorts-grid');
         recommendationsContainer.querySelector('.rec-shorts-nav-btn.prev').addEventListener('click', () => { shortsGrid.scrollLeft -= shortsGrid.clientWidth; });
         recommendationsContainer.querySelector('.rec-shorts-nav-btn.next').addEventListener('click', () => { shortsGrid.scrollLeft += shortsGrid.clientWidth; });
 
         setupButtonInteractions();
-        loadUserPlaylists(); // Carrega as playlists do usuário no início
+        loadUserPlaylists(); 
     };
 
     init();

@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +11,6 @@ body {
   display: flex;
 }
 
-/* Header */
 .header {
   position: fixed;
   top: 0;
@@ -80,7 +78,6 @@ body {
   cursor: pointer;
 }
 
-/* Sidebar */
 .sidebar {
   position: fixed;
   top: 60px;
@@ -115,7 +112,6 @@ body {
   background: #383838;
 }
 
-/* Content */
 .content {
   margin-top: 60px;
   margin-left: 200px;
@@ -124,20 +120,16 @@ body {
   transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
 }
 
-/* H1 em cima */
 .content h1 {
   margin-bottom: 20px;
 }
 
-/* Container de vídeos como GRID */
-/* Container de vídeos */
 #video-container {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 colunas fixas */
+  grid-template-columns: repeat(4, minmax(0, 1fr)); 
   gap: 20px;
 }
 
-/* Cada card ocupa 100% da coluna, mas não mais */
 .video {
   background: #282828;
   border-radius: 8px;
@@ -146,7 +138,6 @@ body {
   transition: transform 0.2s;
   margin: 20px;
 
-  /* REMOVE width:100%, o grid já define a largura */
 }
 
 .video:hover {
@@ -166,5 +157,5 @@ body {
 
 .history-container {
     display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+  grid-template-columns: repeat(3, 1fr); 
 }

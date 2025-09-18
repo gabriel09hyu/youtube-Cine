@@ -1,17 +1,12 @@
-/* --- Estilos específicos da página de busca --- */
-
 #search-title {
   font-weight: 400;
   margin-bottom: 20px;
   border-bottom: 1px solid #373737;
   padding-bottom: 15px;
-  /* FAZ O TÍTULO OCUPAR TODAS AS COLUNAS DO GRID */
-  /* Isso força o container de resultados a ir para a linha de baixo. */
   grid-column: 1 / -1;
 }
 
 .search-results-container {
-  /* Faz o container de resultados ocupar todas as colunas do grid também */
   grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
@@ -69,21 +64,21 @@
 }
 
 .user-comment {
-    margin-left: 0; /* Remove a margem esquerda para comentários do usuário */
+    margin-left: 0; 
 }
 
 .ai-response {
-    margin-left: 50px; /* Adiciona uma margem esquerda para as respostas da IA */
+    margin-left: 50px; 
     position: relative;
 }
 
 .ai-response::before {
-    content: '>'; /* Adiciona uma seta */
+    content: '>'; 
     position: absolute;
-    left: -25px; /* Ajusta a posição da seta */
+    left: -25px; 
     top: 50%;
     transform: translateY(-50%);
-    color: #999; /* Cor da seta */
+    color: #999; 
 }
 
 .notification {
@@ -120,25 +115,21 @@
     }
 }
 
-/* --- Media Queries para Responsividade --- */
 
-/* Para telas de celular (a partir de 768px) */
 @media (max-width: 768px) {
   .search-result-card {
-    /* Altera o layout de linha para coluna */
     flex-direction: column;
   }
 
   .search-result-card .thumbnail {
-    /* A thumbnail agora ocupa 100% da largura e tem uma altura fixa */
     width: 98%;
-    height: 180px; /* Reduz a altura da thumbnail para deixar o card menor */
+    height: 180px; 
   }
 
 
   .search-result-card .title {
-    font-size: 16px; /* Reduz o tamanho da fonte do título */
-    margin-bottom: 4px; /* Diminui a margem para um visual mais compacto */
+    font-size: 16px; 
+    margin-bottom: 4px; 
   }
 
   #search-title {

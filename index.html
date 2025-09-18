@@ -6,11 +6,11 @@
   <title>YouTube Clone</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="sidebar-collapsed"> <!-- Adicionado para o menu começar fechado -->
+<body class="sidebar-collapsed">
   <!-- Header -->
   <header class="header">
     <div class="header-left">
-      <span id="menu-toggle">&#9776;</span> <!-- Ícone de menu adicionado AQUI -->
+      <span id="menu-toggle">&#9776;</span> 
       <a href="index.html" style="text-decoration: none; color: inherit;"><div class="logo">▶ YouTube</div></a>
     </div>
     <div class="search-bar">
@@ -46,11 +46,11 @@
       <button class="filter-btn" data-endpoint="/trending/all/week" data-type="all">Em Alta</button>
       <button class="filter-btn" data-endpoint="/tv/top_rated" data-type="tv">Séries (Top)</button>
     </div>
-    <!-- Container para a primeira fileira de vídeos -->
+    <!-- primeira fileira de vídeos -->
     <div id="first-row-videos" class="video-grid-row"></div>
 
-    <!-- Seção para os Shorts -->
-    <section id="shorts-section" class="shorts-section-container" style="display: none;"> <!-- Começa escondida -->
+    <!-- Shorts -->
+    <section id="shorts-section" class="shorts-section-container" style="display: none;"> 
       <h2><a href="page/shorts.html">🔥 Shorts</a></h2>
       <div class="shorts-wrapper">
         <button class="shorts-nav-btn prev" id="shorts-prev-btn">‹</button>
@@ -58,7 +58,7 @@
         <button class="shorts-nav-btn next" id="shorts-next-btn">›</button>
       </div>
     </section>
-    <!-- Vídeos vão aparecer aqui dinamicamente -->
+    <!-- Vídeos dinamicamente -->
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

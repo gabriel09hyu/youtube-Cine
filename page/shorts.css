@@ -1,38 +1,30 @@
-/* Remove o padding padrão do .content para que o feed ocupe toda a área */
 .content {
     padding: 0;
-    /* Remove o grid layout da página principal */
     display: block;
 }
 
-/* Container principal do feed de shorts */
 #shorts-feed-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Altura total da viewport menos o header */
     height: calc(100vh - 60px);
     overflow-y: scroll;
-    /* Efeito de "travar" o scroll em cada short */
     scroll-snap-type: y mandatory;
-    /* Esconde a barra de rolagem */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 }
 
-/* Esconde a barra de rolagem para Chrome, Safari e Opera */
 #shorts-feed-container::-webkit-scrollbar {
     display: none;
 }
 
-/* Cada item individual no feed */
 .short-item {
     width: 100%;
-    max-width: 450px; /* Largura máxima similar a um celular */
-    height: calc(100vh - 100px); /* Reduzimos a altura para não ocupar 100% */
+    max-width: 450px; 
+    height: calc(100vh - 100px); 
     flex-shrink: 0;
     position: relative;
-    scroll-snap-align: center; /* Centraliza o item na tela ao "travar" o scroll */
+    scroll-snap-align: center; 
     background-color: #000;
     border-radius: 12px;
     overflow: hidden;
@@ -42,15 +34,13 @@
     margin: 0 auto;
 }
 
-/* Imagem do pôster */
 .short-item .poster {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cobre todo o espaço, pode cortar um pouco */
-    opacity: 0.8; /* Levemente escurecido para o texto sobressair */
+    object-fit: cover; 
+    opacity: 0.8; 
 }
 
-/* Container para as informações sobrepostas */
 .short-item .info-overlay {
     position: absolute;
     bottom: 20px;
@@ -70,7 +60,6 @@
     font-size: 14px;
     color: #eee;
     margin-bottom: 10px;
-    /* Limita o texto a 3 linhas e adiciona "..." no final */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -82,7 +71,6 @@
     color: #ddd;
 }
 
-/* Botão para ver detalhes */
 .short-item .details-btn {
     position: absolute;
     top: 20px;

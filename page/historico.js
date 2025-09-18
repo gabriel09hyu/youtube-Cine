@@ -1,4 +1,3 @@
-// js/pages/historico.js
 
 import { getHistory } from '../videoManager.js'
 import { createVideoCard } from './cards.js';
@@ -13,9 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   videos.forEach(video => {
-    const card = createVideoCard(video, { basePath: './' }); // Passa o caminho base correto
+    const card = createVideoCard(video, { basePath: './' }); 
     historyContainer.appendChild(card);
   });
 });
-// Importa a lógica compartilhada do menu e busca
 import "./layout.js";

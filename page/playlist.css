@@ -1,12 +1,9 @@
-/* Importa estilos comuns para não repetir código */
 @import url('../style.css');
 
-/* Layout da página de playlist */
 .content {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Sobrescreve o grid da página inicial */
   display: block;
 }
 
@@ -50,7 +47,6 @@
   gap: 15px;
 }
 
-/* Estilo para cada item de vídeo na lista (reaproveitando search.css) */
 .search-result-card {
   display: flex;
   gap: 15px;
@@ -98,12 +94,11 @@
   color: #aaa;
   margin-top: 12px;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limita a 2 linhas */
+  -webkit-line-clamp: 2; 
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* Adicionar ao final de page/playlist.css ou similar */
 
 .playlist-grid {
   display: grid;

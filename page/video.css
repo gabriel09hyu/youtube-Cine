@@ -1,4 +1,3 @@
-/* Reset básico e corpo da página */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +11,6 @@ body {
   display: flex;
 }
 
-/* Header (copiado de style.css para consistência) */
 .header {
   position: fixed; top: 0; left: 0; right: 0; height: 60px;
   background: #202020; display: flex; align-items: center;
@@ -27,15 +25,13 @@ body {
 .search-bar button { background: #303030; border: none; color: white; padding: 8px 12px; cursor: pointer; border-radius: 0 2px 2px 0; }
 .icons span { margin-left: 15px; cursor: pointer; }
 
-/* Ícone de busca para mobile (copiado de style.css) */
 .mobile-search-icon {
-  display: none; /* Escondido por padrão em telas grandes */
+  display: none; 
   font-size: 20px;
   cursor: pointer;
   padding: 0 10px;
 }
 
-/* Sidebar (copiado de style.css para consistência) */
 .sidebar {
   position: fixed; top: 60px; left: 0; width: 200px;
   background: #202020; height: calc(100% - 60px); padding-top: 20px;
@@ -62,17 +58,16 @@ body {
 }
 
 .video-section {
-  flex: 2.5; /* Um meio-termo para a largura */
+  flex: 2.5; 
 }
 
 .recommendations {
-  flex: 1; /* Ocupa menos espaço */
+  flex: 1; 
 }
 
-/* Player e Metadados */
 .video-player {
   width: 100%;
-  padding-top: 54%; /* Um pouco mais alto, mais próximo do padrão */
+  padding-top: 54%; 
   background-color: #000;
   position: relative;
   border-radius: 12px;
@@ -107,15 +102,14 @@ body {
   padding: 10px 15px; border-radius: 20px; cursor: pointer;
 }
 
-/* Estilos para o botão Salvar e o menu */
 .save-action-container {
-  position: relative; /* Contexto para o menu absoluto */
+  position: relative; 
 }
 
 .save-playlist-menu {
-  display: none; /* Escondido por padrão */
+  display: none; 
   position: absolute;
-  bottom: 120%; /* Aparece acima do botão */
+  bottom: 120%; 
   left: 0;
   background-color: #282828;
   border: 1px solid #555;
@@ -127,7 +121,7 @@ body {
 }
 
 .save-playlist-menu.show {
-  display: block; /* Mostra o menu */
+  display: block; 
 }
 
 .save-playlist-menu .menu-header {
@@ -151,12 +145,10 @@ body {
 }
 
 .save-playlist-menu .playlist-list input[type="checkbox"] {
-  /* Esconde o checkbox padrão */
   appearance: none;
   -webkit-appearance: none;
   margin: 0;
 
-  /* Estilo da caixa customizada */
   width: 20px;
   height: 20px;
   border: 2px solid #aaa;
@@ -171,7 +163,6 @@ body {
   border-color: #3ea6ff;
 }
 
-/* Desenha o "check" dentro da caixa quando marcado */
 .save-playlist-menu .playlist-list input[type="checkbox"]:checked::after {
   content: '';
   position: absolute;
@@ -195,38 +186,69 @@ body {
   font-size: 14px;
 }
 
-/* Outros estilos da página */
-.channel-info { display: flex; align-items: center; gap: 15px; margin-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #383838; }
-.channel-avatar { width: 48px; height: 48px; background-color: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.channel-info { 
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #383838;
+ }
+
+.channel-avatar {
+  width: 48px;
+  height: 48px;
+  background-color: #555;
+  border-radius: 50%;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: 24px;
+}
+      
 .channel-name { font-weight: bold; }
 .subscribers { color: #aaa; font-size: 12px; }
-.subscribe-btn { background-color: red; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin-left: auto; }
-.subscribe-btn.subscribed { background-color: #555; }
-.video-description { background-color: #282828; padding: 15px; border-radius: 12px; margin-top: 20px; }
 
-/* Comentários e Recomendações */
+.subscribe-btn { 
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: auto; 
+}
+
+.subscribe-btn.subscribed { background-color: #555; }
+
+.video-description { 
+  background-color: #282828;
+  padding: 15px; 
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
 .comments-section, .ai-comments-container { margin-top: 24px; }
 .ai-comments-container h3 {
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 24px; /* Adiciona espaço abaixo do título dos comentários da IA */
+  margin-bottom: 24px; 
 }
 
 .comments-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
 .sort-btn { background: none; border: none; color: #aaa; cursor: pointer; }
 .add-comment { display: flex; align-items: center; gap: 15px; margin-bottom: 24px; }
 .comment-input { flex: 1; background: none; border: none; border-bottom: 1px solid #555; color: white; padding: 8px 0; outline: none; }
-.comment { display: flex; gap: 15px; margin-bottom: 24px; /* Aumenta o espaço entre os comentários */ }
+.comment { display: flex; gap: 15px; margin-bottom: 24px;  }
 .comment .avatar { width: 40px; height: 40px; background-color: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .comment .username { font-weight: bold; font-size: 13px; margin-bottom: 4px; }
 .comment .comment-text { font-size: 14px; }
 
-/* --- Estilo para o Título das Recomendações --- */
 .recommendations-title {
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 16px;
-  padding-top: 4px; /* Pequeno ajuste para alinhar melhor quando a página quebra */
+  padding-top: 4px; 
 }
 
 .recommendation { display: flex; gap: 10px; margin-bottom: 15px; cursor: pointer; }
@@ -236,7 +258,6 @@ body {
 
 .notification { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); background-color: #3ea6ff; color: white; padding: 10px 20px; border-radius: 5px; z-index: 2000; }
 
-/* --- Seção de Shorts nas Recomendações --- */
 .rec-shorts-container {
   width: 100%;
   padding: 16px 0;
@@ -260,10 +281,9 @@ body {
 .rec-shorts-grid {
   display: grid;
   grid-auto-flow: column;
-  /* Define a largura para mostrar 2 cards, descontando o espaçamento */
   grid-auto-columns: calc(45% - 8px);
   gap: 16px;
-  overflow: hidden; /* Esconde o excesso, a rolagem é via JS */
+  overflow: hidden; 
   scroll-behavior: smooth;
 }
 
@@ -310,9 +330,8 @@ body {
 .rec-shorts-nav-btn.prev { left: -15px; }
 .rec-shorts-nav-btn.next { right: -15px; }
 
-/* Estilos para o Modal de Nova Playlist */
 .modal-overlay {
-  display: none; /* Escondido por padrão */
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;
@@ -325,7 +344,7 @@ body {
 }
 
 .modal-overlay.show {
-  display: flex; /* Mostra o modal */
+  display: flex; 
 }
 
 .modal-content {
@@ -362,13 +381,11 @@ body {
 }
 
 .modal-actions #create-playlist-btn {
-  /* Estilo do botão primário */
   background-color: #3ea6ff;
   color: white;
   font-weight: bold;
 }
 
-/* Estilo geral para os botões do modal */
 .modal-actions button {
   border: none;
   padding: 10px 20px;
@@ -382,19 +399,14 @@ body {
   opacity: 0.8;
 }
 
-/* --- Media Queries para Responsividade --- */
 
-/* Para telas de tablet e abaixo (a partir de 1024px) */
 @media (max-width: 1024px) {
   .video-layout {
-    /* Altera a direção do flexbox de linha (lado a lado) para coluna (um embaixo do outro) */
     flex-direction: column;
   }
 }
 
-/* Para telas de celular (a partir de 768px) */
 @media (max-width: 768px) {
-  /* Esconde a logo, a barra de busca e os ícones, mostrando apenas o ícone de busca móvel */
   .logo-link, .search-bar, .icons span:not(.mobile-search-icon) {
     display: none;
   }
@@ -402,30 +414,29 @@ body {
     display: block;
   }
   .header-left {
-    flex-grow: 1; /* Permite que o menu ocupe o espaço */
+    flex-grow: 1; 
   }
 
-  /* --- Estilos para quando a busca móvel está ATIVA --- */
   .header.search-active {
     padding: 0 10px;
   }
   .header.search-active .header-left,
   .header.search-active .icons {
-    display: none; /* Esconde o menu e os ícones */
+    display: none; 
   }
   .header.search-active .search-bar {
-    display: flex; /* Mostra a barra de busca */
+    display: flex; 
     width: 100%;
     max-width: 100%;
     margin: 0;
     animation: fadeIn 0.3s ease-in-out;
   }
   .header.search-active #search-button::before {
-    content: '←'; /* Transforma em botão de voltar */
+    content: '←'; 
     font-size: 24px;
     font-weight: bold;
   }
   .header.search-active #search-button {
-    font-size: 0; /* Esconde o emoji de lupa */
+    font-size: 0; 
   }
 }
