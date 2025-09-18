@@ -1,9 +1,9 @@
 import { addVideoToHistory } from './videoManager.js';
+import { TMDB_API_KEY } from './config.js';
 
 const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w342'; 
 let activeMediaType = 'movie'; 
 const container = document.getElementById("video-container");
-const apiKey = 'd62492ee51bbba141d7a8f0c7daa6e30';
 const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
@@ -80,7 +80,7 @@ function createHomepageShortCard(item) {
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     params: {
-        api_key: apiKey,
+        api_key: TMDB_API_KEY,
         language: 'pt-BR',
     }
 })

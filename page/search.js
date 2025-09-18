@@ -1,11 +1,12 @@
+import { TMDB_API_KEY } from '../config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Configuração da API ---
-    const apiKey = 'd62492ee51bbba141d7a8f0c7daa6e30';
     const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
     const api = axios.create({
         baseURL: 'https://api.themoviedb.org/3/',
-        params: { api_key: apiKey, language: 'pt-BR' }
+        params: { api_key: TMDB_API_KEY, language: 'pt-BR' }
     });
 
     // --- Seletores de Elementos ---

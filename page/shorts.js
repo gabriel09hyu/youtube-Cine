@@ -1,12 +1,12 @@
 import { addVideoToHistory } from '../videoManager.js';
+import { TMDB_API_KEY } from '../config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = 'd62492ee51bbba141d7a8f0c7daa6e30';
     const posterBaseUrl = 'https://image.tmdb.org/t/p/w780';
 
     const api = axios.create({
         baseURL: 'https://api.themoviedb.org/3/',
-        params: { api_key: apiKey, language: 'pt-BR' }
+        params: { api_key: TMDB_API_KEY, language: 'pt-BR' }
     });
 
     const feedContainer = document.getElementById('shorts-feed-container');

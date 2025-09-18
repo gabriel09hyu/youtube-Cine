@@ -1,9 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlaylist, addVideoToPlaylist, removeVideoFromPlaylist, getVideoList } from "../videoManager.js";
+import { TMDB_API_KEY, GEMINI_API_KEY } from "../config.js";
 
 // --- Configuração da API ---
 
-    const apiKey = 'd62492ee51bbba141d7a8f0c7daa6e30';
     const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'; 
     const posterBaseUrl = 'https://image.tmdb.org/t/p/w780'; 
     const SHORTS_POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w342'; 
@@ -11,7 +11,7 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
 
     const api = axios.create({
         baseURL: 'https://api.themoviedb.org/3/',
-        params: { api_key: apiKey, language: 'pt-BR' }
+        params: { api_key: TMDB_API_KEY, language: 'pt-BR' }
     });
 
     // --- Seletores de Elementos do HTML ---
@@ -144,8 +144,7 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
         aiCommentsContainer.innerHTML = '<h3 style="margin: 20px">Comentários da Comunidade (Gerados por IA)</h3><p>Gerando comentários...</p>';
 
         try {
-            const API_KEY = "AIzaSyBn8mLJXIaZgUX_NyOIkYqRXY9uGbL9LZI";
-            const genAI = new GoogleGenerativeAI(API_KEY);
+            const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
             const prompts = [
@@ -517,8 +516,7 @@ import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlay
     }
 
     const generateAiResponse = async (userComment) => {
-      const API_KEY = "AIzaSyBn8mLJXIaZgUX_NyOIkYqRXY9uGbL9LZI";
-      const genAI = new GoogleGenerativeAI(API_KEY);
+      const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       let mediaContext = "Contexto sobre a obra sendo discutida:\n";
