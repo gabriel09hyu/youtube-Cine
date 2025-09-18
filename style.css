@@ -1,0 +1,425 @@
+/* Reset básico */
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #181818;
+  color: white;
+  display: flex;
+}
+
+/* Header */
+.header { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #202020;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000; 
+  
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para o novo ícone de menu */
+#menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 15px;
+  color: #aaa;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: red;
+  padding: 8px;
+  padding-top: 7px;
+  border: 0.1px rgba(0, 0, 0, 0.4) solid;
+  border-radius: 10px;
+  margin-left: 16px; /* Aumentado para dar espaço ao ícone */
+  text-shadow: 2px 0px 0 black;
+}
+
+.mobile-search-icon {
+  display: none; /* Escondido por padrão em telas grandes */
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.search-bar {
+  display: flex;
+  flex: 1;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  border-radius: 2px 0 0 2px;
+}
+
+.search-bar button {
+  background: #303030;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+}
+
+.icons span {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
+  background: #202020;
+  height: calc(100% - 60px); /* Ajusta a altura para não ficar sob o header */
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  /* Animação suave para o menu */
+  transition: transform 0.3s ease-in-out;
+  z-index: 999; /* Garante que fique acima do conteúdo mas abaixo do header */
+  border-right: 1px solid #303030;
+}
+
+/* Regras para quando o menu estiver fechado */
+.sidebar-collapsed .sidebar {
+  transform: translateX(-100%); /* Esconde o menu para a esquerda */
+}
+
+.sidebar-collapsed .content {
+  margin-left: 0; /* Ocupa o espaço do menu */
+  width: 100%;
+}
+
+.sidebar a {
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
+  margin: 2px 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sidebar a:hover {
+  background: #383838;
+}
+
+/* Estilo para o link da página ativa */
+.sidebar a.active {
+  background-color: #4d4d4d;
+  font-weight: bold;
+}
+
+.sidebar h3 {
+  padding: 15px 20px 5px;
+  color: #aaa;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-top: 1px solid #383838;
+  margin-top: 10px;
+}
+
+/* Content */
+/* Content */
+.content {
+  margin-top: 60px;
+  margin-left: 200px;
+  padding: 20px;
+  width: calc(100% - 200px); /* ocupa todo o espaço restante da tela */
+  display: grid;
+  /* Grid de 3 colunas fixas */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px; /* Aumenta o espaçamento geral */
+  /* Animação suave para o conteúdo */
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* Novo container para a primeira fileira de vídeos */
+.video-grid-row {
+  grid-column: 1 / -1; /* Ocupa a linha toda */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Grid de 3 colunas fixas */
+  gap: 30px; /* Aumenta o espaçamento geral */
+}
+
+
+.video {
+  background: #282828;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.video:hover {
+  transform: scale(1.03);
+}
+
+.thumbnail {
+  background-color: gray;
+  width: 100%;
+  height: 200px; /* Altura aumentada para vídeos maiores */
+  border-radius: 8px;
+  margin-bottom: 8px;
+  /* Adições para a imagem de fundo */
+  background-size: cover; /* A imagem deve cobrir o espaço, sem distorcer */
+  background-position: center; /* Centraliza a imagem */
+}
+
+.title {
+  font-size: 14px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.channel {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.sub-header {
+  /* Faz o sub-header ocupar toda a largura do grid, ficando acima dos vídeos */
+  grid-column: 1 / -1;
+  height: 50px;
+  /* Adicionei um fundo para visualização e alinhei o conteúdo */
+  background-color: #282828;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 10px; /* Espaço entre os botões de filtro */
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: white;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Evita que o texto quebre */
+}
+
+.filter-btn:hover {
+  background-color: #444;
+}
+
+.filter-btn.active {
+  background-color: white;
+  color: black;
+  border-color: white;
+}
+
+/* Adicione este código ao seu arquivo style.css */
+
+/* --- Seção de Shorts na Página Inicial --- */
+.shorts-section-container {
+  padding: 24px 24px 0 24px; /* Ajuste no padding */
+  border-top: 4px solid rgb(40, 40, 40);
+  margin-top: 24px; /* Ajuste na margem */
+  border-bottom: 4px solid rgb(40, 40, 40);
+  /* Faz a seção ocupar toda a largura do grid, criando uma nova "linha" */
+  grid-column: 1 / -1;
+}
+
+.shorts-section-container h2 {
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.shorts-section-container h2 a {
+  text-decoration: none;
+  color: white;
+}
+
+.shorts-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.shorts-grid {
+  display: grid;
+  /* Cria um grid que rola horizontalmente */
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr); /* Aumentando ainda mais a largura dos cards */
+  gap: 16px;
+  overflow-x: auto; /* Permite a rolagem horizontal */
+  padding-bottom: 20px; /* Espaço para a barra de rolagem não colar nos cards */
+  scroll-behavior: smooth; /* Rolagem suave com JS */
+  transition: all 0.3s ease-in-out; /* Animação suave para mudanças */
+  /* Esconde a barra de rolagem */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE e Edge */
+}
+
+/* Esconde a barra de rolagem para Chrome, Safari e Opera */
+.shorts-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.shorts-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(30, 30, 30, 0.8);
+  color: white;
+  border: 1px solid #555;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shorts-nav-btn.prev {
+  left: 5px;
+}
+.shorts-nav-btn.next {
+  right: 5px;
+}
+
+.short-card-homepage {
+  background-color: #212121;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.short-card-homepage:hover {
+  transform: scale(1.03);
+}
+
+.short-card-homepage img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.short-card-homepage .short-title {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* TABLETS E ABAIXO (a partir de 1024px) */
+@media (max-width: 1024px) {
+  /* A sidebar se torna um menu flutuante (overlay) */
+  .sidebar {
+    transform: translateX(-100%); /* Escondida por padrão */
+    position: fixed;
+    z-index: 1100; /* Garante que fique acima do conteúdo */
+  }
+  /* Mostra a sidebar quando o menu é aberto */
+  body:not(.sidebar-collapsed) .sidebar {
+    transform: translateX(0);
+  }
+  /* O conteúdo sempre ocupa 100% da largura */
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* CELULARES (a partir de 768px) */
+@media (max-width: 768px) {
+  /* Esconde a barra de busca e os ícones normais, mostra o ícone de busca móvel */
+  .search-bar, .icons span:not(.mobile-search-icon) { display: none; }
+  .mobile-search-icon { display: block; } /* Mostra o ícone de busca móvel */
+  .header-left { flex-grow: 1; } /* Permite que o logo e menu ocupem o espaço */
+  .logo { margin-left: 8px; }
+
+  /* --- Estilos para quando a busca móvel está ATIVA --- */
+  .header.search-active {
+    /* No estado ativo, o header inteiro se torna um container para a busca */
+    padding: 0 10px;
+  }
+
+  .header.search-active .header-left,
+  .header.search-active .icons {
+    display: none; /* Esconde logo, menu e ícones */
+  }
+
+  .header.search-active .search-bar {
+    display: flex; /* Mostra a barra de busca com animação */
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* O botão de busca vira um botão de "voltar" */
+  .header.search-active #search-button::before {
+    content: '←'; /* Usa ::before para não interferir no ícone original */
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .header.search-active #search-button {
+    font-size: 0; /* Esconde o emoji de lupa original */
+  }
+  
+  .header.search-active .search-bar button {
+    /* Transforma o botão de busca em um botão de "voltar" */
+    content: '←';
+    font-size: 24px;
+  }
+  
+  /* Transforma o grid de vídeos em um feed vertical */
+  .content, .video-grid-row {
+    display: block; /* Remove o layout de grid */
+    padding: 0; /* Remove o padding para os vídeos ocuparem a largura toda */
+  }
+
+  .video {
+    margin-bottom: 24px; /* Adiciona um espaço entre os vídeos no feed */
+  }
+
+  .shorts-section-container, .shorts-grid { padding-left: 16px; padding-right: 16px; }
+
+  /* Animação de fade-in simples */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+}

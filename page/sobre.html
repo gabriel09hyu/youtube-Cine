@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - YouTube Clone</title>
+  <link rel="stylesheet" href="../style.css"> <!-- CSS Principal -->
+  <link rel="stylesheet" href="sobre.css">   <!-- CSS Específico da Página -->
+</head>
+<body class="sidebar-collapsed">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <span id="menu-toggle">&#9776;</span>
+      <a href="../index.html" style="text-decoration: none; color: inherit;"><div class="logo">▶ YouTube</div></a>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Pesquisar">
+      <button id="search-button">🔍</button>
+    </div>
+    <div class="icons">
+      <span>📹</span>
+      <span>🔔</span>
+      <span>😊</span>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="../index.html">🏠 Início</a>
+    <a href="shorts.html">🔥 Shorts</a>
+    <h3>Você ></h3>
+    <a href="historico.html">Histórico</a>
+    <a href="playlist.html">Playlists</a>
+    <a href="playlist.html?id=watch-later">Assistir mais tarde</a>
+    <a href="gostei.html">Videos com 'Gostei'</a>
+    <a href="sobre.html">Sobre</a>
+  </aside>
+
+  <main class="content">
+    <div class="about-container">
+      <h1>Um YouTube de Filmes e Séries</h1>
+      <p class="intro">Olá! Se você chegou até aqui, provavelmente está curioso sobre como este site funciona. Mas com um foco diferente: em vez de vídeos de criadores, o conteúdo é inteiramente sobre filmes e séries.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h2>🎬 Conteúdo Dinâmico com TMDB</h2>
+          <p>Todo o catálogo de "vídeos" que você vê por aqui vem da API do The Movie Database (TMDB). Isso significa que temos um universo de filmes e séries para explorar, com informações, pôsteres e recomendações sempre atualizadas.</p>
+        </div>
+        <div class="feature-card">
+          <h2>🤖 Comentários com IA (Gemini)</h2>
+          <p>A seção de comentários é especial. Para simular uma comunidade ativa, usando a API do Google Gemini para gerar opiniões diversas sobre os filmes. você também pode deixar seu próprio comentário e a IA te responderá, como se fosse outro fã de cinema!</p>
+        </div>
+        <div class="feature-card">
+          <h2>🔥 Feed de "Shorts"</h2>
+          <p>Inspirado nas plataformas de vídeos curtos, criei um feed de "Shorts" que mostra pôsteres de filmes e séries em um formato vertical e viciante. É uma forma rápida e divertida de descobrir novos títulos para assistir.</p>
+        </div>
+        <div class="feature-card">
+          <h2>📂 Gerenciamento Pessoal</h2>
+          <p>Como em um YouTube de verdade, você pode organizar sua vida cinéfila. O site guarda seu histórico de visualizações, permite que você marque os filmes que "Gostou", salve para "Assistir mais tarde" e crie suas próprias playlists.</p>
+        </div>
+        <div class="feature-card">
+          <h2>🔍 Busca e Filtros</h2>
+          <p>Está procurando por algo específico? A barra de busca é totalmente funcional. Além disso, na página inicial, você pode usar os filtros para navegar por categorias como "Populares", "Em Alta" e "Séries (Top)".</p>
+        </div>
+        <div class="feature-card">
+          <h2>📱 Interface Moderna e Responsiva</h2>
+          <p>A interface foi construída do zero para ser limpa, moderna e intuitiva, usando as melhores práticas de CSS. Ela se adapta a diferentes tamanhos de tela, funcionando bem tanto no computador quanto no celular.</p>
+        </div>
+      </div>
+
+      <div class="tech-stack">
+        <h2>Tecnologias Utilizadas</h2>
+        <ul>
+          <li><strong>HTML5:</strong> A base de tudo, estruturando cada página de forma semântica.</li>
+          <li><strong>CSS3:</strong> Responsável por todo o visual, com Flexbox e Grid Layout para criar um layout flexível e moderno.</li>
+          <li><strong>JavaScript (ES6+):</strong> O cérebro da aplicação, cuidando de toda a interatividade, lógica e comunicação com as APIs.</li>
+          <li><strong>API do The Movie Database (TMDB):</strong> A fonte de todo o conteúdo de filmes e séries.</li>
+          <li><strong>API do Google Gemini:</strong> A inteligência por trás dos comentários e das respostas da IA.</li>
+          <li><strong>Axios:</strong> Para fazer as chamadas às APIs de um jeito mais prático e moderno.</li>
+          <li><strong>LocalStorage:</strong> Para salvar suas informações (histórico, playlists, etc.) diretamente no seu navegador.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+  <script type="module" src="layout.js"></script>
+</body>
+</html>
