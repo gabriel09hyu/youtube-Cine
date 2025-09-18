@@ -25,3 +25,5 @@ jobs:
         with:
           branch: gh-pages # A branch que será publicada
           folder: . # A pasta raiz do seu projeto
+          clean-exclude: |
+            config.js
