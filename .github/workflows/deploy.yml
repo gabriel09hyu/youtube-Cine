@@ -17,16 +17,15 @@ jobs:
 
       - name: Cria o arquivo config.js com as chaves secretas
         run: |
-          echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > config.js
-          echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" >> config.js
+          echo "export const TMDB_API_KEY = '${{ env.TMDB_KEY }}';" > config.js
+          echo "export const GEMINI_API_KEY = '${{ env.GEMINI_KEY }}';" >> config.js
+        env:
+          TMDB_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+          GEMINI_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
 
-      - name: APAGA o .gitignore e Publica no GitHub Pages
+      - name: Apaga o .gitignore e Publica no GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # A branch que será publicada
           folder: . # A pasta raiz do seu projeto
-          # Este comando é executado antes do deploy.
-          # Ele apaga o .gitignore no ambiente da Action,
-          # garantindo que o config.js seja incluído.
-          # O seu .gitignore no repositório principal continua seguro.
-          pre-run: rm .gitignore
+          run: rm .gitignore # Apaga o .gitignore para forçar a inclusão do config.js
