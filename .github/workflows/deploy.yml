@@ -19,13 +19,11 @@ jobs:
           echo "Arquivo config.js criado com sucesso no deploy:"
           cat config.js
 
-      - name: Deploy 🚀
+      - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # A branch que será publicada
           folder: . # A pasta raiz do seu projeto
-          # Força a inclusão de arquivos ignorados pelo .gitignore
-          # Isso é CRUCIAL para que o config.js seja publicado.
-          git-config-name: GitHub Actions
-          git-config-email: actions@github.com
-          add: 'config.js'
+          # Remove o config.js do .gitignore ANTES do deploy
+          # para que ele seja incluído na publicação.
+          clean-exclude: config.js
