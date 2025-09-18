@@ -1,7 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { addVideoToLiked, addVideoToWatchLater, getUserPlaylists, createUserPlaylist, addVideoToPlaylist, removeVideoFromPlaylist, getVideoList } from "../videoManager.js";
 import { TMDB_API_KEY, GEMINI_API_KEY } from "../config.js";
-import { TMDB_API_KEY, GEMINI_API_KEY } from '../config.js';
 
 // --- Configuração da API ---
 
