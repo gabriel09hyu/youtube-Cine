@@ -12,25 +12,21 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 1. Baixa o código do repositório
+      - name: Baixa o código do repositório
         uses: actions/checkout@v3
 
-      - name: 2. Cria o arquivo config.js com as chaves secretas
+      - name: Cria o arquivo config.js com as chaves secretas
         run: |
           echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > config.js
           echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" >> config.js
-          echo "--- Conteúdo do config.js criado ---"
-          cat config.js
-          echo "------------------------------------"
 
-      - name: 3. Publica no GitHub Pages
+      - name: APAGA o .gitignore e Publica no GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # A branch que será publicada
           folder: . # A pasta raiz do seu projeto
-          # Esta opção remove o .gitignore antes do deploy, forçando
-          # a inclusão de TODOS os arquivos, incluindo o config.js.
-          # O seu .gitignore no repositório principal continua intacto.
-          clean: true
-          clean-exclude: |
-            .gitignore
+          # Este comando é executado antes do deploy.
+          # Ele apaga o .gitignore no ambiente da Action,
+          # garantindo que o config.js seja incluído.
+          # O seu .gitignore no repositório principal continua seguro.
+          pre-run: rm .gitignore
