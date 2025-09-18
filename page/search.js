@@ -1,4 +1,4 @@
-import { TMDB_API_KEY } from '../app-config.js';
+import { TMDB_API_KEY } from '/youtube-Cine/app-config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Configuração da API ---

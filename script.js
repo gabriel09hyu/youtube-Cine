@@ -1,5 +1,5 @@
 import { addVideoToHistory } from './videoManager.js';
-import { TMDB_API_KEY } from './app-config.js';
+import { TMDB_API_KEY } from '/youtube-Cine/app-config.js';
 
 const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w342'; 
 let activeMediaType = 'movie'; 
@@ -80,7 +80,7 @@ function createHomepageShortCard(item) {
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     params: {
-        api_key: TMDB_API_KEY,
+        api_key: TMDB_API_KEY, 
         language: 'pt-BR',
     }
 })

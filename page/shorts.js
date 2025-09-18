@@ -1,5 +1,5 @@
 import { addVideoToHistory } from '../videoManager.js';
-import { TMDB_API_KEY } from '../app-config.js';
+import { TMDB_API_KEY } from '/youtube-Cine/app-config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const posterBaseUrl = 'https://image.tmdb.org/t/p/w780';
