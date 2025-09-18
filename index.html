@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sidebar-collapsed"> <!-- Adicionado para o menu começar fechado -->
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <span id="menu-toggle">&#9776;</span> <!-- Ícone de menu adicionado AQUI -->
+      <a href="index.html" style="text-decoration: none; color: inherit;"><div class="logo">▶ YouTube</div></a>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Pesquisar">
+      <button id="search-button">🔍</button>
+    </div>
+    <div class="icons">
+      <span class="mobile-search-icon">🔍</span>
+      <span>📹</span>
+      <span>🔔</span>
+      <span>😊</span>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="index.html">🏠 Início</a>
+    <a href="page/shorts.html">🔥 Shorts</a>
+    <h3>Você ></h3>
+    <a href="page/historico.html">Histórico</a>
+    <a href="page/playlist.html">Playlists</a>
+    <a href="page/playlist.html?id=watch-later">Assistir mais tarde</a>
+    <a href="page/gostei.html">Videos com 'Gostei'</a>
+
+    <a href="page/sobre.html">Sobre</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content" id="video-container">
+    <div class="sub-header">
+      <button class="filter-btn active" data-endpoint="/movie/popular" data-type="movie">Início</button>
+      <button class="filter-btn" data-endpoint="/tv/popular" data-type="tv">Populares</button>
+      <button class="filter-btn" data-endpoint="/trending/all/week" data-type="all">Em Alta</button>
+      <button class="filter-btn" data-endpoint="/tv/top_rated" data-type="tv">Séries (Top)</button>
+    </div>
+    <!-- Container para a primeira fileira de vídeos -->
+    <div id="first-row-videos" class="video-grid-row"></div>
+
+    <!-- Seção para os Shorts -->
+    <section id="shorts-section" class="shorts-section-container" style="display: none;"> <!-- Começa escondida -->
+      <h2><a href="page/shorts.html">🔥 Shorts</a></h2>
+      <div class="shorts-wrapper">
+        <button class="shorts-nav-btn prev" id="shorts-prev-btn">‹</button>
+        <div class="shorts-grid" id="shorts-grid-container"></div>
+        <button class="shorts-nav-btn next" id="shorts-next-btn">›</button>
+      </div>
+    </section>
+    <!-- Vídeos vão aparecer aqui dinamicamente -->
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
