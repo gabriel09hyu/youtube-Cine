@@ -1,5 +1,4 @@
 # Ignorar arquivos de configuração com chaves de API
-config.js
 
 # Ignorar dependências do Node.js
 /node_modules
