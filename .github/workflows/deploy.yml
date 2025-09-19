@@ -18,6 +18,8 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:    # O GitHub Pages precisa disso aqui
+      name: github-pages
     steps:
       - name: Baixa o código do repositório
         uses: actions/checkout@v4
