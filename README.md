@@ -10,6 +10,8 @@
 
 > **Nota:** As imagens acima são provenientes da tela de início da aplicação, e da tela de vídeo. Acesse o site em: https://gabriel09hyu.github.io/youtube-Cine/.
 
+> **Link Alternativo: https://youtubecine.netlify.app
+
 ## 📖 Sobre o Projeto
 
 Este projeto é uma recriação funcional e moderna da interface do YouTube, mas com um toque especial: todo o conteúdo é focado em filmes e séries. Desenvolvido com **HTML, CSS e JavaScript puros**, o site consome dados da API do **The Movie Database (TMDB)** para exibir um catálogo dinâmico e utiliza a API do **Google Gemini** para criar uma seção de comentários interativa e inteligente.
