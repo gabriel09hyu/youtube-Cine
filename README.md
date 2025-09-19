@@ -4,9 +4,11 @@
  <br>
  <br>
  <img width="900" alt="videoT" src="https://github.com/user-attachments/assets/ccb0053b-0437-4bcf-992c-804750e04972" />
+ <br>
+ <br>
 
 
-> **Nota:** As imagens acima são provenientes da tela de início da aplicação, e da tela de vídeo. .
+> **Nota:** As imagens acima são provenientes da tela de início da aplicação, e da tela de vídeo. Acesse o site em: https://gabriel09hyu.github.io/youtube-Cine/.
 
 ## 📖 Sobre o Projeto
 
