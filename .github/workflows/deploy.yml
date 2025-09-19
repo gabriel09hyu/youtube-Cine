@@ -28,19 +28,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Sobrescreve o arquivo de configuração com as chaves
-        env:
-          GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
-          TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
         run: |
-          # Remove o arquivo placeholder para garantir que ele seja recriado.
-          rm -f app-config.js
-          # Cria o arquivo app-config.js com as chaves de API a partir dos secrets.
-          printf "export const GEMINI_API_KEY = '%s';\nexport const TMDB_API_KEY = '%s';\n" "$GEMINI_API_KEY" "$TMDB_API_KEY" > app-config.js
+          echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" > app-config.js
+          echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" >> app-config.js
 
       - name: Empacota o site para deploy
         uses: actions/upload-pages-artifact@v3
         with:
-          # Empacota todo o diretório. Como app-config.js é rastreado, ele será incluído.
+          # Empacota todo o diretório. Como app-config.js é sobrescrito aqui, ele será incluído.
           path: '.'
 
       - name: Publica no GitHub Pages
