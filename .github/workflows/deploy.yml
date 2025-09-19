@@ -30,8 +30,8 @@ jobs:
       - name: Sobrescreve o arquivo de configuração com as chaves
         run: |
           # Este comando vai encontrar o app-config.js que já existe e substituir seu conteúdo.
-          echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > app-config.js
           echo "export const GEMINI_API_KEY = '${{ secrets.VITE_GEMINI_API_KEY }}';" >> app-config.js
+          echo "export const TMDB_API_KEY = '${{ secrets.VITE_TMDB_API_KEY }}';" > app-config.js
 
       - name: Empacota o site para deploy
         uses: actions/upload-pages-artifact@v3
