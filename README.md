@@ -8,9 +8,9 @@
  <br>
 
 
-> **Nota:** As imagens acima são provenientes da tela de início da aplicação, e da tela de vídeo. Acesse o site em: https://gabriel09hyu.github.io/youtube-Cine/.
+> **Nota:** As imagens acima são provenientes da tela de início da aplicação, e da tela de vídeo. Acesse o site em: https://youtubecine.netlify.app.
 
-> **Link Alternativo: https://youtubecine.netlify.app
+
 
 ## 📖 Sobre o Projeto
 
